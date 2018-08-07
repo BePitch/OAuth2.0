@@ -1,0 +1,135 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row ">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ manufacturer.name }}
+			<figure class="creator">
+				<img src="{{ url_for('static', filename='blank_user.gif') }}">
+				<h3>Created By: {{creator.name}}</h3>
+			</figure>
+			</h1>
+
+		</div>
+	</div>
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-12 padding-none">
+			<a href="{{url_for('editManufacturer', manufacturer_id = manufacturer.id )}}">
+				<button class="btn btn-primary" >
+						<i class="far fa-edit"></i> Edit manufacturer
+				</button>
+			</a>
+			<a href="{{url_for('newSoftware', manufacturer_id = manufacturer.id )}}">
+				<button class="btn btn-success">
+						<i class="fas fa-plus-square"></i> Add software
+				</button>
+			</a>
+						<a href="{{url_for('deleteManufacturer', manufacturer_id = manufacturer.id )}}">
+				<button class="btn btn-danger delete" id="delete-manufacturer">
+						<i class="fas fa-trash-alt"></i> Delete manufacturer
+				</button>
+			</a>
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col"><hr></div>
+	</div>
+
+	{% if items !=[] %}	
+		<div class="row">
+			<div class="col-md-3">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-dark"><h2>Media Editing</h2></li>
+					</ul>
+					{% for i in items %}
+						{% if i.category == 'Media Editing' %}
+							<div class="border-bottom border-dark">
+								<h3>{{i.name}}</h3>
+								<p class="text-right">Software Price: {{i.price}}</p>
+								<p class="text-right">Year Published: {{i.year_published}}</p>
+								<a href='{{url_for('editSoftware', manufacturer_id = manufacturer.id, software_id=i.id ) }}'>
+										<button class="btn btn-primary" >
+												<i class="far fa-edit"></i> Edit
+										</button>	
+								</a> | 
+								<a href='{{url_for('deleteSoftware', manufacturer_id = manufacturer.id, software_id=i.id ) }}'>
+									<button class="btn btn-danger delete" id="delete-manufacturer">
+										<i class="fas fa-trash-alt"></i> Delete
+									</button></a>
+							</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-1"></div>
+
+			<div class="col-md-3">			
+					<ul class="list-group">
+							<li class="list-group-item list-group-item-dark"><h2>Data</h2></li>
+						</ul>
+					{% for i in items %}
+						{% if i.category == 'Data' %}
+						<div class="border-bottom border-dark">
+							<h3>{{i.name}}</h3>
+							<p class="text-right">Software Price: {{i.price}}</p>
+							<p class="text-right">Year Published: {{i.year_published}}</p>
+							<a href='{{url_for('editSoftware', manufacturer_id = manufacturer.id, software_id=i.id ) }}'>
+									<button class="btn btn-primary" >
+											<i class="far fa-edit"></i> Edit
+									</button>	
+							</a>  
+							<a href='{{url_for('deleteSoftware', manufacturer_id = manufacturer.id, software_id=i.id ) }}'>
+								<button class="btn btn-danger delete" id="delete-manufacturer">
+									<i class="fas fa-trash-alt"></i> Delete
+								</button></a>
+						</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-1"></div>
+
+			<div class="col-md-3">
+					<ul class="list-group">
+							<li class="list-group-item list-group-item-dark"><h2>Visualization</h2></li>
+					</ul>
+					{% for i in items %}
+						{% if i.category == 'Visualization' %}
+						<div class="border-bottom border-dark">
+							<h3>{{i.name}}</h3>
+							<p class="text-right">Software Price: {{i.price}}</p>
+							<p class="text-right">Year Published: {{i.year_published}}</p>
+							<a href='{{url_for('editSoftware', manufacturer_id = manufacturer.id, software_id=i.id ) }}'>
+									<button class="btn btn-primary" >
+											<i class="far fa-edit"></i> Edit
+									</button>	
+							</a>  
+							<a href='{{url_for('deleteSoftware', manufacturer_id = manufacturer.id, software_id=i.id ) }}'>
+								<button class="btn btn-danger delete" id="delete-manufacturer">
+									<i class="fas fa-trash-alt"></i> Delete
+								</button></a>
+						</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+	<div class="row">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ manufacturer.name }}
+			<figure class="creator">
+				<img src="{{ url_for('static', filename=creator.picture) }}">
+				<figcaption>{{ creator.name }}</figcaption>
+			</figure>
+			</h1>
+
+		</div>
+	</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+						{% for message in messages %}
+							 <li> <strong> {{ message }} </strong> </li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
+	</div>
+	<div class="row">
+			<div class="col"><hr></div>
+	</div>
+
+	{% if items !=[] %}	
+	<div class="row">
+			<div class="col-md-3">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-dark"><h2>Media Editing</h2></li>
+					</ul>
+					{% for i in items %}
+						{% if i.category == 'Media Editing' %}
+							<div class="border-bottom border-dark">
+								<h3>{{i.name}}</h3>
+								<p class="text-right">Software Price: {{i.price}}</p>
+								<p class="text-right">Year Published: {{i.year_published}}</p>
+							</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-1"></div>
+
+			<div class="col-md-3">			
+					<ul class="list-group">
+							<li class="list-group-item list-group-item-dark"><h2>Data</h2></li>
+						</ul>
+					{% for i in items %}
+						{% if i.category == 'Data' %}
+						<div class="border-bottom border-dark">
+							<h3>{{i.name}}</h3>
+							<p class="text-right">Software Price: {{i.price}}</p>
+							<p class="text-right">Year Published: {{i.year_published}}</p>
+						</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-3">
+					<ul class="list-group">
+							<li class="list-group-item list-group-item-dark"><h2>Visualization</h2></li>
+					</ul>
+					{% for i in items %}
+						{% if i.category == 'Visualization' %}
+						<div class="border-bottom border-dark">
+							<h3>{{i.name}}</h3>
+							<p class="text-right">Software Price: {{i.price}}</p>
+							<p class="text-right">Year Published: {{i.year_published}}</p>
+						</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	{% endif %}
+{% endblock %}

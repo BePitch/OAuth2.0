@@ -1,0 +1,67 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="row ">
+	<div class="col-md-10"></div>
+	<div class="col-md-2 text-right"></div>
+</div>
+
+<div class="row">
+	<div class="col-md-12"></div>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<h1>Manufacturers</h1>
+	</div>
+	<div class="col-md-8">
+		<a href="{{url_for('newManufacturer')}}">
+			<button class="btn btn-default" id="new-manufacturer">
+					<i class="fas fa-plus-square"></i> Add manufacturer
+			</button>
+		</a>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+<div class = 'flash'>
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+	{% for message in messages %}
+		<li> <strong> {{ message }} </strong> </li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+{% endwith %}
+</div>
+
+<div class="row">
+		<div class="col-sm-8">
+		{% for manufacturer in manufacturers %}
+		<div class="row">
+		<div class="col-sm-2"></div>
+			<div class="col-sm-6"> 
+				<div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+					<img class="card-img-top" src="{{ url_for('static', filename=manufacturer.picture) }}" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">{{manufacturer.name}}</h4>
+							<a href="{{url_for('showSoftware', manufacturer_id = manufacturer.id)}}" class="btn btn-primary">Software</a>
+						</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+	  
+	<div class="col-sm-4 border-left"><h4>Latest Manufacturers</h4>
+		{% for manufacturer in manufacturers %}
+		<div class="list-group">
+		<a class="text-primary list-group-item list-group-item-action" href="{{url_for('showSoftware', manufacturer_id = manufacturer.id)}}">{{manufacturer.name}}</a>
+		</div>
+		{% endfor %}
+	</div>
+	
+	</div>
+	{% endblock %}

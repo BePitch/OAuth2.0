@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row">
+		<div class="col-md-12"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-11 col-md-offset-1">
+			<h1>New Software</h1>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="50" class="form-control" name="name"placeholder="Name of the software">
+
+					<label for="year_published">year_published</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="year_published" placeholder="year of publication"></textarea>
+
+					<label for="price">Price:</label>
+					<div class="input-group">
+						<div class="input-group-addon">$</div>
+						<input type ="text" class="form-control" maxlength="10" name="price" placeholder="Price in $">
+					</div>
+					<label for="Category">Category:</label>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="Category" id="1" value="Data">Data
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="Category" id="2" value="Media Editing">Media Editing
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="Category" id="3" value="Visualization">Visualization
+					  </label>
+					</div>
+
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+							<i class="far fa-plus-square"></i>Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+

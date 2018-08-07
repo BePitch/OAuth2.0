@@ -10,8 +10,6 @@
       
       
       </head>
-      
-      
       <body>  
       
       
@@ -37,7 +35,7 @@
         if (authResult['code']) {
           // Hide the sign-in button now that the user is authorized
           $('#signinButton').attr('style', 'display: none');
-          // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+          // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main manufacturers page
           $.ajax({
             type: 'POST',
             url: '/gconnect?state={{STATE}}',
@@ -49,7 +47,7 @@
               if (result) {
                 $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
                setTimeout(function() {
-                window.location.href = "/restaurant";
+                window.location.href = "/manufacturer";
                }, 4000);
                 
             } else if (authResult['error']) {
@@ -61,11 +59,9 @@
             
         }); } }
       </script>
-      
-      
-      
       <!--END GOOGLE PLUS SIGN IN -->
       
+
       <!--FACEBOOK SIGN IN -->
       <script>
         window.fbAsyncInit = function() {
@@ -104,7 +100,7 @@
               if (result) {
                 $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
                setTimeout(function() {
-                window.location.href = "/restaurant";
+                window.location.href = "/manufacturer";
                }, 4000);
                 
             } else {

@@ -1,0 +1,22 @@
+
+a {
+    color: var(--white);
+  }
+.white, .white a {
+    color: #fff;
+  }
+
+.padding-md { 
+    padding: 1em; 
+}
+
+.login {
+    margin-top: 30px;
+}
+
+.divider.blue {
+	background-color: #42C3C9;
+}
+.divider.green {
+	background-color: #9FB80A;
+}

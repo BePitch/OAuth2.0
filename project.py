@@ -260,14 +260,14 @@ def gdisconnect():
 
 
 # JSON APIs to view manufacturer Information
-@app.route('//<int:manufacturer_id>/software/JSON')
+@app.route('/manufacturer/<int:manufacturer_id>/software/JSON')
 def manufacturerSoftwareJSON(manufacturer_id):
     manufacturer = session.query(Manufacturer).\
                             filter_by(id=manufacturer_id).one()
     items = session.query(Software).filter_by(
-        manufacturer_id=manufacturer_id).all()
+        manufacturer_id=manufacturer.id).all()
     session.close()
-    return jsonify(softwareItems=[i.serialize for i in items])
+    return jsonify(items=[i.serialize for i in items])
 
 
 @app.route('''/manufacturer/<int:manufacturer_id>/software/<int:software_id>\

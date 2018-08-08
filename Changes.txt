@@ -10,6 +10,8 @@ Year Published changed to number with min 1800
 
 Fixed broken link on editSoftware flask route
 
+Updated JSON for Software route
+
 Added cascade delete in my database_setup file. Thanks for this info. Great stuff.
 
 added minimal html to logn page. Just header and main block.

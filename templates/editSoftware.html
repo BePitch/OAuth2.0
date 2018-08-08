@@ -14,15 +14,15 @@
 			<form action="#" method = "post">
 				<div class="form-group">
 					<label for="name">Name:</label>
-					<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}">
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}" required>
 
-					<label for="year_published">Year Published:</label>
-					<textarea class="form-control" maxlength="250" rows="3" name="year_published">{{item.year_published}}</textarea>
+					<label for="year_published">year_published</label>
+					<input type ="number" class="form-control" maxlength="250" min="1800" max="9999" rows="3" name="year_published" placeholder="year published" value="{{item.year_published}}">
 
 					<label for="price">Price:</label>
 					<div class="input-group">
 						<div class="input-group-addon">$</div>
-						<input type ="text" maxlength="10" class="form-control" name="price" value="{{item.price}}">
+						<input type ="number" class="form-control" min="0.00" step="0.01" max="2500" name="price" placeholder="Price in $" value="{{item.price}}">
 					</div>
 					<label for="category">category:</label>
 					<div class="radio">

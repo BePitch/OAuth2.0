@@ -359,6 +359,7 @@ def editManufacturer(manufacturer_id):
 def deleteManufacturer(manufacturer_id):
     manufacturerToDelete = session.query(Manufacturer).\
                                         filter_by(id=manufacturer_id).one()
+
     if 'username' not in login_session:
         return redirect('/login')
     if manufacturerToDelete.user_id != login_session['user_id']:
@@ -459,11 +460,11 @@ def editSoftware(manufacturer_id, software_id):
         session.add(editedItem)
         session.commit()
         flash('software Item Successfully Edited')
-        return redirect(url_for('''showSoft
-        ware''', manufacturer_id=manufacturer_id))
+        return redirect(url_for('''showSoftware''',
+                                manufacturer_id=manufacturer_id))
     else:
-        return render_template('''editSoftware
-        .html''', manufacturer_id=manufacturer_id,
+        return render_template('''editSoftware.html''',
+                               manufacturer_id=manufacturer_id,
                                software_id=software_id,
                                item=editedItem)
 

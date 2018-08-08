@@ -6,6 +6,7 @@ from passlib.apps import custom_app_context as pwd_context
 
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
@@ -32,7 +33,7 @@ class Manufacturer(Base):
     picture = Column(String(250))
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
-    
+    software = relationship("Software", cascade="delete")
 
     @property
     def serialize(self):
@@ -42,8 +43,8 @@ class Manufacturer(Base):
             'name': self.name,
             'corporate_city': self.corporate_city,
             'created_date': self.created_date
-            
         }
+
 
 class Software(Base):
     __tablename__ = 'software'
@@ -57,7 +58,6 @@ class Software(Base):
     manufacturer_id = Column(Integer, ForeignKey('manufacturer.id'))
     manufacturer = relationship(Manufacturer)
     user_id = Column(Integer, ForeignKey('user.id'))
-    
 
     @property
     def serialize(self):
@@ -69,8 +69,6 @@ class Software(Base):
             'year_published': self.year_published,
             'category': self.category,
             'created_date': self.created_date
-            
-            
         }
 
 engine = create_engine('sqlite:///softwarecatalog.db')

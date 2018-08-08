@@ -1,0 +1,19 @@
+Made some form fields required for new/edit software and new/edit manufacturer and changed these:
+
+Manufacturer
+Name made required
+Added corporate city to edit form
+
+Software
+Price made number type with min 0 and required
+Year Published changed to number with min 1800
+
+Fixed broken link on editSoftware flask route
+
+Added cascade delete in my database_setup file. Thanks for this info. Great stuff.
+
+added minimal html to logn page. Just header and main block.
+
+Run all three files through Pep8 online check website and fixed errors for 3 python files
+
+

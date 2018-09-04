@@ -6,7 +6,7 @@ from database_setup import Manufacturer, Base, Software, User
 
 now = datetime.datetime.now()
 
-engine = create_engine('sqlite:///softwarecatalog.db')
+engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
 # Bind the engine to the metadata of the Base class so that the
 # declaratives can be accessed through a DBSession instance
 Base.metadata.bind = engine

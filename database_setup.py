@@ -71,7 +71,7 @@ class Software(Base):
             'created_date': self.created_date
         }
 
-engine = create_engine('sqlite:///softwarecatalog.db')
+engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
 
 
 Base.metadata.create_all(engine)
